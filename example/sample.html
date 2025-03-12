@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Document</title>
-    <script src="new.js"></script>
+    <script>
+      document
+        .getElementById("bookform")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          info();
+        });
+      function info() {
+        var name = document.getElementById("bookName").value;
+        var year = document.getElementById("bookDate").value;
+        var author = document.getElementById("bookAuthor").value;
 
-    <p id="iss_data"></p>
-    <button onclick="getIssPosition()">Retrieve ISS data</button>
+        document.getElementById("bookInfo").innerText =
+          'The Book "' + name + '", was written by' + author + " in" + year;
+      }
+    </script>
   </head>
-  <body></body>
+  <body>
+    <title>Document</title>
+
+    <form id="bookform" method="post" action="sample.html">
+      <fieldset>
+        <label>Book Name:</label>
+        <input id="bookName" type="text" />
+        <br />
+        <label>Book Date</label>
+        <input id="bookDate" type="number" />
+        <br />
+
+        <label>Book Author</label>
+        <input id="bookAuthor" type="text" />
+        <br />
+
+        <input type="submit" onclick="info()" />
+      </fieldset>
+    </form>
+  </body>
 </html>
